@@ -2,7 +2,7 @@
 ---
 - hosts: all
   tasks:
-    - command: 'cat /etc/redhat-r*'
+    - command: 'cat /etc/redhat-release'
       register: cat1
     - command: 'tail /var/log/secure'
       register: cat2
