@@ -1,2 +1,2 @@
 [webservers]
-webserver1
+webserver1 ansible_user=cloud_user
