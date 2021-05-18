@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Add the user 'tstark' with a specific uid and variable primary group
+    - name: Add a variable user and variable primary group
       ansible.builtin.user:
         name: "{{ user_name }}"
         group: "{{ group_name }}"
