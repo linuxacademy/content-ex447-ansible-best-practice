@@ -1,0 +1,3 @@
+[backup_servers]
+backup1 ansible_user=cloud_user streams=192
+backup2 ansible_user=cloud_user streams=384
