@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Install Apache on Webservers
+      yum:
+        state: present
+        name: httpd
+
+    - name: Install CSH on Backup servers (required per vendor)
+      yum:
+        state: present
+        name: csh
+
+    - name: Configure /var/www/html/index.html
+      copy:
+        dest: "/var/www/html/index.html"
+        content: |
+          This is your new website content.
+          Please replace this with the actual content from the developers before going production.
+
+    - name: Create backup software directory (Per vendor, directory must exist before software is installed)
+        file:
+          dest: "/opt/backup"
+          state: directory
+
+    - name: Configure backup streams (Per vendor, file must exist before software is installed)
+      copy:
+        dest: "/opt/backup/streams"
+        content: "192"

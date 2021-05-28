@@ -1,0 +1,2 @@
+backup1 ansible_user=cloud_user 
+webserver1 ansible_user=cloud_user 
