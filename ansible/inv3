@@ -1,2 +1,4 @@
+[backups]
 backup1 ansible_user=cloud_user 
+[webservers]
 webserver1 ansible_user=cloud_user 
