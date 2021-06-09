@@ -19,6 +19,6 @@
      
     - name: Attempt to add host back to load balancer
       command:
-        cmd: cmd: /opt/balancer/manage.sh add {{ inventory_hostname }}
+        cmd: /opt/balancer/manage.sh add {{ inventory_hostname }}
       delegate_to: loadbalancer
       when: updates.changed
