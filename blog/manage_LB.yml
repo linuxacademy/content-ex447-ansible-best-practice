@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Attempt to remove host from load balancer 
+      command:
+        cmd: /opt/balancer/manage.sh remove {{ inventory_hostname }}
+        creates: /tmp/{{ inventory_hostname }}.removed
+      delegate_to: loadbalancer
+      register: removed
+
+    - name: Install all updataes
+      yum:
+        state: latest
+        name: '*'
+      when: removed.changed
+      register: updates
+     
+    - name: Attempt to add host back to load balancer
+      command:
+        cmd: cmd: /opt/balancer/manage.sh add {{ inventory_hostname }}
+      delegate_to: loadbalancer
+      when: updates.changed
